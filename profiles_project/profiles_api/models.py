@@ -64,3 +64,18 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
     class Meta:
         db_table = 'user_profile'
         default_related_name = 'user_profiles'
+
+class ProfileFeedItem(models.Model):
+    """
+    Profile status update.
+    """
+    user_profile = models.ForeignKey('UserProfile', on_delete=models.RESTRICT)
+    status_text = models.CharField(max_length=255)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.status_text
+    
+    class Meta:
+        db_table = 'profile_feed_item'
+        default_related_name = 'profile_feed_items'
