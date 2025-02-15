@@ -5,6 +5,7 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('hello-viewset', views.HelloViewset, basename='hello-viewset')
+router.register('profile', views.UserProfileViewset, basename='profile')
 
 urlpatterns = [
     path('hello-view/', views.HelloApiView.as_view()),
